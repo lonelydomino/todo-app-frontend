@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { Task } from '@/types/task';
-import { CheckCircle, Circle, Trash2, Edit } from 'lucide-react';
+import { Task } from "@/types/task";
+import { CheckCircle, Circle, Trash2, Edit } from "lucide-react";
 
 interface TaskCardProps {
   task: Task;
@@ -11,26 +11,38 @@ interface TaskCardProps {
 }
 
 const colorClasses = {
-  red: 'bg-red-100 border-red-300 text-red-800',
-  blue: 'bg-blue-100 border-blue-300 text-blue-800',
-  green: 'bg-green-100 border-green-300 text-green-800',
-  yellow: 'bg-yellow-100 border-yellow-300 text-yellow-800',
-  purple: 'bg-purple-100 border-purple-300 text-purple-800',
-  pink: 'bg-pink-100 border-pink-300 text-pink-800',
+  red: "bg-red-100 border-red-300 text-red-800",
+  blue: "bg-blue-100 border-blue-300 text-blue-800",
+  green: "bg-green-100 border-green-300 text-green-800",
+  yellow: "bg-yellow-100 border-yellow-300 text-yellow-800",
+  purple: "bg-purple-100 border-purple-300 text-purple-800",
+  pink: "bg-pink-100 border-pink-300 text-pink-800",
 };
 
-export default function TaskCard({ task, onToggleCompletion, onDelete, onEdit }: TaskCardProps) {
-  const colorClass = colorClasses[task.color as keyof typeof colorClasses] || colorClasses.blue;
+export default function TaskCard({
+  task,
+  onToggleCompletion,
+  onDelete,
+  onEdit,
+}: TaskCardProps) {
+  const colorClass =
+    colorClasses[task.color as keyof typeof colorClasses] || colorClasses.blue;
 
   return (
-    <div className={`bg-white rounded-lg shadow-sm border-2 p-4 transition-all duration-200 hover:shadow-md ${task.completed ? 'opacity-75' : ''}`}>
+    <div
+      className={`bg-white rounded-lg shadow-sm border-2 p-4 transition-all duration-200 hover:shadow-md ${
+        task.completed ? "opacity-75" : ""
+      }`}
+    >
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-3 flex-1">
           {/* Completion Toggle */}
           <button
             onClick={() => onToggleCompletion(task.id, !task.completed)}
             className="text-gray-400 hover:text-green-500 transition-colors"
-            aria-label={task.completed ? 'Mark as incomplete' : 'Mark as complete'}
+            aria-label={
+              task.completed ? "Mark as incomplete" : "Mark as complete"
+            }
           >
             {task.completed ? (
               <CheckCircle className="w-6 h-6 text-green-500" />
@@ -41,11 +53,17 @@ export default function TaskCard({ task, onToggleCompletion, onDelete, onEdit }:
 
           {/* Task Content */}
           <div className="flex-1 min-w-0">
-            <h3 className={`text-lg font-medium ${task.completed ? 'line-through text-gray-500' : 'text-gray-900'}`}>
+            <h3
+              className={`text-lg font-medium ${
+                task.completed ? "line-through text-gray-500" : "text-gray-900"
+              }`}
+            >
               {task.title}
             </h3>
             <div className="flex items-center space-x-2 mt-1">
-              <span className={`inline-block px-2 py-1 rounded-full text-xs font-medium border ${colorClass}`}>
+              <span
+                className={`inline-block px-2 py-1 rounded-full text-xs font-medium border ${colorClass}`}
+              >
                 {task.color}
               </span>
               <span className="text-xs text-gray-500">
@@ -76,3 +94,4 @@ export default function TaskCard({ task, onToggleCompletion, onDelete, onEdit }:
     </div>
   );
 }
+

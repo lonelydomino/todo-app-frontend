@@ -1,31 +1,31 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { ArrowLeft, Save } from 'lucide-react';
-import { api } from '@/services/api';
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { ArrowLeft, Save } from "lucide-react";
+import { api } from "@/services/api";
 
 const colorOptions = [
-  { value: 'red', label: 'Red', className: 'bg-red-500' },
-  { value: 'blue', label: 'Blue', className: 'bg-blue-500' },
-  { value: 'green', label: 'Green', className: 'bg-green-500' },
-  { value: 'yellow', label: 'Yellow', className: 'bg-yellow-500' },
-  { value: 'purple', label: 'Purple', className: 'bg-purple-500' },
-  { value: 'pink', label: 'Pink', className: 'bg-pink-500' },
+  { value: "red", label: "Red", className: "bg-red-500" },
+  { value: "blue", label: "Blue", className: "bg-blue-500" },
+  { value: "green", label: "Green", className: "bg-green-500" },
+  { value: "yellow", label: "Yellow", className: "bg-yellow-500" },
+  { value: "purple", label: "Purple", className: "bg-purple-500" },
+  { value: "pink", label: "Pink", className: "bg-pink-500" },
 ];
 
 export default function CreateTaskPage() {
-  const [title, setTitle] = useState('');
-  const [color, setColor] = useState('blue');
+  const [title, setTitle] = useState("");
+  const [color, setColor] = useState("blue");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!title.trim()) {
-      setError('Title is required');
+      setError("Title is required");
       return;
     }
 
@@ -33,17 +33,17 @@ export default function CreateTaskPage() {
       setLoading(true);
       setError(null);
       await api.createTask({ title: title.trim(), color });
-      router.push('/');
+      router.push("/");
     } catch (err) {
-      setError('Failed to create task');
-      console.error('Error creating task:', err);
+      setError("Failed to create task");
+      console.error("Error creating task:", err);
     } finally {
       setLoading(false);
     }
   };
 
   const handleBack = () => {
-    router.push('/');
+    router.push("/");
   };
 
   return (
@@ -66,7 +66,10 @@ export default function CreateTaskPage() {
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Title Field */}
             <div>
-              <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="title"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 Task Title *
               </label>
               <input
@@ -91,8 +94,8 @@ export default function CreateTaskPage() {
                     key={option.value}
                     className={`relative cursor-pointer rounded-lg p-3 border-2 transition-all ${
                       color === option.value
-                        ? 'border-gray-900 shadow-md'
-                        : 'border-gray-200 hover:border-gray-300'
+                        ? "border-gray-900 shadow-md"
+                        : "border-gray-200 hover:border-gray-300"
                     }`}
                   >
                     <input
@@ -104,8 +107,12 @@ export default function CreateTaskPage() {
                       className="sr-only"
                     />
                     <div className="flex items-center space-x-2">
-                      <div className={`w-4 h-4 rounded-full ${option.className}`}></div>
-                      <span className="text-sm font-medium text-gray-700">{option.label}</span>
+                      <div
+                        className={`w-4 h-4 rounded-full ${option.className}`}
+                      ></div>
+                      <span className="text-sm font-medium text-gray-700">
+                        {option.label}
+                      </span>
                     </div>
                   </label>
                 ))}
@@ -138,7 +145,7 @@ export default function CreateTaskPage() {
                 ) : (
                   <Save className="w-4 h-4" />
                 )}
-                <span>{loading ? 'Creating...' : 'Create Task'}</span>
+                <span>{loading ? "Creating..." : "Create Task"}</span>
               </button>
             </div>
           </form>
@@ -147,3 +154,4 @@ export default function CreateTaskPage() {
     </div>
   );
 }
+

@@ -17,3 +17,4 @@ export interface UpdateTaskData {
   color?: string;
   completed?: boolean;
 }
+

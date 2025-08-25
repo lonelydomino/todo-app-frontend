@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { Plus, Trash2, Edit } from 'lucide-react';
-import { Task } from '@/types/task';
-import { api } from '@/services/api';
-import TaskCard from '@/components/TaskCard';
-import CreateTaskButton from '@/components/CreateTaskButton';
-import { useRouter } from 'next/navigation';
+import { useState, useEffect } from "react";
+import { Plus, Trash2, Edit } from "lucide-react";
+import { Task } from "@/types/task";
+import { api } from "@/services/api";
+import TaskCard from "@/components/TaskCard";
+import CreateTaskButton from "@/components/CreateTaskButton";
+import { useRouter } from "next/navigation";
 
 export default function HomePage() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -25,8 +25,8 @@ export default function HomePage() {
       setTasks(fetchedTasks);
       setError(null);
     } catch (err) {
-      setError('Failed to fetch tasks');
-      console.error('Error fetching tasks:', err);
+      setError("Failed to fetch tasks");
+      console.error("Error fetching tasks:", err);
     } finally {
       setLoading(false);
     }
@@ -35,21 +35,21 @@ export default function HomePage() {
   const handleToggleCompletion = async (id: number, completed: boolean) => {
     try {
       await api.toggleTaskCompletion(id, completed);
-      setTasks(tasks.map(task => 
-        task.id === id ? { ...task, completed } : task
-      ));
+      setTasks(
+        tasks.map((task) => (task.id === id ? { ...task, completed } : task))
+      );
     } catch (err) {
-      console.error('Error toggling task completion:', err);
+      console.error("Error toggling task completion:", err);
     }
   };
 
   const handleDeleteTask = async (id: number) => {
-    if (window.confirm('Are you sure you want to delete this task?')) {
+    if (window.confirm("Are you sure you want to delete this task?")) {
       try {
         await api.deleteTask(id);
-        setTasks(tasks.filter(task => task.id !== id));
+        setTasks(tasks.filter((task) => task.id !== id));
       } catch (err) {
-        console.error('Error deleting task:', err);
+        console.error("Error deleting task:", err);
       }
     }
   };
@@ -58,7 +58,7 @@ export default function HomePage() {
     router.push(`/edit/${task.id}`);
   };
 
-  const completedCount = tasks.filter(task => task.completed).length;
+  const completedCount = tasks.filter((task) => task.completed).length;
   const totalCount = tasks.length;
 
   if (loading) {
@@ -85,7 +85,9 @@ export default function HomePage() {
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Todo List</h1>
           <div className="flex justify-center items-center space-x-8 text-lg text-gray-600">
             <span>Tasks: {totalCount}</span>
-            <span>Completed: {completedCount} of {totalCount}</span>
+            <span>
+              Completed: {completedCount} of {totalCount}
+            </span>
           </div>
         </div>
 
@@ -98,7 +100,9 @@ export default function HomePage() {
         <div className="space-y-4">
           {tasks.length === 0 ? (
             <div className="text-center py-12">
-              <div className="text-gray-500 text-lg">No tasks yet. Create your first task!</div>
+              <div className="text-gray-500 text-lg">
+                No tasks yet. Create your first task!
+              </div>
             </div>
           ) : (
             tasks.map((task) => (

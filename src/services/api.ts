@@ -1,13 +1,13 @@
-import { Task, CreateTaskData, UpdateTaskData } from '@/types/task';
+import { Task, CreateTaskData, UpdateTaskData } from "@/types/task";
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
 
 export const api = {
   // Get all tasks
   async getTasks(): Promise<Task[]> {
     const response = await fetch(`${API_BASE_URL}/tasks`);
     if (!response.ok) {
-      throw new Error('Failed to fetch tasks');
+      throw new Error("Failed to fetch tasks");
     }
     return response.json();
   },
@@ -15,14 +15,14 @@ export const api = {
   // Create a new task
   async createTask(taskData: CreateTaskData): Promise<Task> {
     const response = await fetch(`${API_BASE_URL}/tasks`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(taskData),
     });
     if (!response.ok) {
-      throw new Error('Failed to create task');
+      throw new Error("Failed to create task");
     }
     return response.json();
   },
@@ -30,14 +30,14 @@ export const api = {
   // Update a task
   async updateTask(id: number, taskData: UpdateTaskData): Promise<Task> {
     const response = await fetch(`${API_BASE_URL}/tasks/${id}`, {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(taskData),
     });
     if (!response.ok) {
-      throw new Error('Failed to update task');
+      throw new Error("Failed to update task");
     }
     return response.json();
   },
@@ -45,10 +45,10 @@ export const api = {
   // Delete a task
   async deleteTask(id: number): Promise<void> {
     const response = await fetch(`${API_BASE_URL}/tasks/${id}`, {
-      method: 'DELETE',
+      method: "DELETE",
     });
     if (!response.ok) {
-      throw new Error('Failed to delete task');
+      throw new Error("Failed to delete task");
     }
   },
 
@@ -57,3 +57,4 @@ export const api = {
     return this.updateTask(id, { completed });
   },
 };
+
