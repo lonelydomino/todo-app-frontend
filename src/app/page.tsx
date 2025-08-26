@@ -81,28 +81,35 @@ export default function HomePage() {
     <div className="min-h-screen bg-gray-900">
       {/* Black Header Bar */}
       <header className="bg-black shadow-lg border-b border-gray-800">
-        <div className="max-w-6xl mx-auto px-4 py-12">
-          <div className="flex items-center justify-center space-x-12">
+        <div className="max-w-6xl mx-auto px-8 py-12">
+          <div className="flex flex-col items-center space-y-6">
             {/* App Title with Rocket Icon */}
             <div className="flex items-center">
-              <Rocket className="w-8 h-8 mr-3 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent" />
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
-                Todo App
+              <div className="w-8 h-8 mr-3 flex items-center justify-center">
+                <img src="/rocket.png" alt="Rocket Logo" className="w-8 h-8" />
+              </div>
+              <h1 className="text-4xl font-black">
+                <span style={{ color: "#51a8dc" }}>Todo</span>
+                <span style={{ color: "#5e5ed3" }}> App</span>
               </h1>
             </div>
-
-            {/* Create Task Button */}
-            <CreateTaskButton />
           </div>
+        </div>
+
+        {/* Create Task Button positioned on the bottom border */}
+        <div className="flex justify-center -mb-6">
+          <CreateTaskButton />
         </div>
       </header>
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 py-8">
-        {/* Task Summary Counters */}
-        <div className="flex justify-center items-center space-x-12 mb-8">
+        {/* Task Summary Counters positioned on opposite sides of the line */}
+        <div className="flex justify-between items-center mb-4">
           <div className="flex items-center space-x-2">
-            <span className="text-blue-500 text-lg font-medium">Tasks</span>
+            <span className="text-lg font-medium" style={{ color: "#51a8dc" }}>
+              Tasks
+            </span>
             <span className="bg-gray-700 text-white px-3 py-1 rounded-full text-sm font-medium">
               {totalCount}
             </span>

@@ -50,12 +50,14 @@ export default function CreateTaskPage() {
     <div className="min-h-screen bg-gray-900">
       {/* Black Header Bar */}
       <header className="bg-black shadow-lg border-b border-gray-800">
-        <div className="max-w-6xl mx-auto px-4 py-12">
-          <div className="flex items-center justify-center space-x-12">
+        <div className="max-w-6xl mx-auto px-8 py-12">
+          <div className="flex flex-col items-center space-y-6">
             {/* App Title with Rocket Icon */}
             <div className="flex items-center">
-              <Rocket className="w-8 h-8 mr-3 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent" />
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+              <div className="w-8 h-8 mr-3 flex items-center justify-center">
+                <img src="/rocket.png" alt="Rocket Logo" className="w-8 h-8" />
+              </div>
+              <h1 className="text-4xl font-black bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
                 Todo App
               </h1>
             </div>
@@ -63,7 +65,7 @@ export default function CreateTaskPage() {
             {/* Back Button */}
             <button
               onClick={handleBack}
-              className="inline-flex items-center space-x-2 px-4 py-2 text-gray-300 bg-gray-800 hover:bg-gray-700 rounded-md transition-colors"
+              className="inline-flex items-center space-x-2 px-8 py-2 text-gray-300 bg-gray-800 hover:bg-gray-700 rounded-md transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Back</span>
