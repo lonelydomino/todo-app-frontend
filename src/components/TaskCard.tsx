@@ -30,15 +30,19 @@ export default function TaskCard({
 
   return (
     <div
-      className={`bg-gray-800 rounded-lg shadow-lg border border-gray-700 p-4 transition-all duration-200 hover:shadow-xl hover:border-gray-600 ${
+      className={`bg-gray-800 rounded-lg shadow-lg border border-gray-700 p-4 transition-all duration-200 hover:shadow-xl hover:border-gray-600 cursor-pointer ${
         task.completed ? "opacity-75" : ""
       }`}
+      onClick={() => onEdit(task)}
     >
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-3 flex-1">
           {/* Completion Toggle */}
           <button
-            onClick={() => onToggleCompletion(task.id, !task.completed)}
+            onClick={(e) => {
+              e.stopPropagation();
+              onToggleCompletion(task.id, !task.completed);
+            }}
             className="transition-all duration-200 hover:scale-105"
             aria-label={
               task.completed ? "Mark as incomplete" : "Mark as complete"
@@ -77,14 +81,11 @@ export default function TaskCard({
             >
               {task.title}
             </h3>
-            <div className="flex items-center space-x-2 mt-1">
+            <div className="flex items-center mt-1">
               <span
                 className={`inline-block px-2 py-1 rounded-full text-xs font-medium border ${colorClass}`}
               >
                 {task.color}
-              </span>
-              <span className="text-xs text-gray-400">
-                {new Date(task.createdAt).toLocaleDateString()}
               </span>
             </div>
           </div>
@@ -93,14 +94,10 @@ export default function TaskCard({
         {/* Action Buttons */}
         <div className="flex items-center space-x-2 ml-4">
           <button
-            onClick={() => onEdit(task)}
-            className="p-2 text-gray-400 hover:text-blue-400 hover:bg-blue-900/20 rounded-lg transition-colors"
-            aria-label="Edit task"
-          >
-            <Edit className="w-4 h-4" />
-          </button>
-          <button
-            onClick={() => onDelete(task.id)}
+            onClick={(e) => {
+              e.stopPropagation();
+              onDelete(task.id);
+            }}
             className="p-2 text-gray-400 hover:text-red-400 hover:bg-red-900/20 rounded-lg transition-colors"
             aria-label="Delete task"
           >
