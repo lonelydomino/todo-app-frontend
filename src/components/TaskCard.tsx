@@ -39,15 +39,32 @@ export default function TaskCard({
           {/* Completion Toggle */}
           <button
             onClick={() => onToggleCompletion(task.id, !task.completed)}
-            className="text-gray-400 hover:text-green-400 transition-colors"
+            className="transition-all duration-200 hover:scale-105"
             aria-label={
               task.completed ? "Mark as incomplete" : "Mark as complete"
             }
           >
             {task.completed ? (
-              <CheckCircle className="w-6 h-6 text-green-400" />
+              <div
+                className="w-6 h-6 rounded-full flex items-center justify-center"
+                style={{ backgroundColor: "#5859bd" }}
+              >
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="white"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={3}
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </div>
             ) : (
-              <Circle className="w-6 h-6" />
+              <div className="w-6 h-6 rounded-full border-2 border-gray-400 hover:border-gray-300 transition-colors"></div>
             )}
           </button>
 

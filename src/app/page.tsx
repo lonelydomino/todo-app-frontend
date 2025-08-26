@@ -122,7 +122,7 @@ export default function HomePage() {
               Completed
             </span>
             <span className="bg-gray-700 text-white px-3 py-1 rounded-full text-sm font-medium">
-              {completedCount}
+              {completedCount} out of {totalCount}
             </span>
           </div>
         </div>
