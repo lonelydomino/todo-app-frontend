@@ -102,7 +102,8 @@ export default function CreateTaskPage() {
                 id="title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-100 placeholder-gray-400"
+                className="w-full px-3 py-2 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-100 placeholder-gray-400"
+                style={{ backgroundColor: "#262626" }}
                 placeholder="Ex. Brush your teeth"
                 required
               />
@@ -164,25 +165,35 @@ export default function CreateTaskPage() {
             )}
 
             {/* Form Actions */}
-            <div className="flex justify-end space-x-3 pt-4">
-              <button
-                type="button"
-                onClick={handleBack}
-                className="px-4 py-2 text-gray-300 bg-gray-700 hover:bg-gray-600 rounded-md transition-colors"
-              >
-                Cancel
-              </button>
+            <div className="flex justify-end pt-4">
               <button
                 type="submit"
                 disabled={loading || !title.trim()}
-                className="inline-flex items-center space-x-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 text-white font-medium rounded-md transition-colors disabled:cursor-not-allowed"
+                className="w-full inline-flex items-center justify-center space-x-3 text-white font-medium py-4 px-8 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                style={{ backgroundColor: "#1d70a0" }}
+                onMouseEnter={(e) =>
+                  !loading &&
+                  (e.currentTarget.style.backgroundColor = "#1a5f8a")
+                }
+                onMouseLeave={(e) =>
+                  !loading &&
+                  (e.currentTarget.style.backgroundColor = "#1d70a0")
+                }
               >
                 {loading ? (
                   <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                 ) : (
-                  <Save className="w-4 h-4" />
+                  <>
+                    <span className="text-lg">Add Task</span>
+                    <div className="p-1">
+                      <img
+                        src="/add icon.png"
+                        alt="Add Icon"
+                        className="w-6 h-6"
+                      />
+                    </div>
+                  </>
                 )}
-                <span>{loading ? "Creating..." : "Create Task"}</span>
               </button>
             </div>
           </form>
