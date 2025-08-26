@@ -47,7 +47,7 @@ export default function CreateTaskPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen" style={{ backgroundColor: "#1a1a1a" }}>
       {/* Black Header Bar */}
       <header className="bg-black shadow-lg border-b border-gray-800">
         <div className="max-w-6xl mx-auto px-8 py-12">
@@ -57,8 +57,9 @@ export default function CreateTaskPage() {
               <div className="w-8 h-8 mr-3 flex items-center justify-center">
                 <img src="/rocket.png" alt="Rocket Logo" className="w-8 h-8" />
               </div>
-              <h1 className="text-4xl font-black bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
-                Todo App
+              <h1 className="text-4xl font-black">
+                <span style={{ color: "#51a8dc" }}>Todo</span>
+                <span style={{ color: "#5e5ed3" }}> App</span>
               </h1>
             </div>
 
@@ -75,14 +76,17 @@ export default function CreateTaskPage() {
       </header>
 
       {/* Main Content */}
-      <div className="max-w-2xl mx-auto px-4 py-8">
+      <div
+        className="max-w-2xl mx-auto px-4 py-8"
+        style={{ backgroundColor: "#1a1a1a" }}
+      >
         {/* Page Title */}
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-gray-100">Create New Task</h2>
         </div>
 
         {/* Form */}
-        <div className="bg-gray-800 rounded-lg shadow-lg border border-gray-700 p-6">
+        <div className="p-6">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Title Field */}
             <div>

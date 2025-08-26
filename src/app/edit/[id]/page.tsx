@@ -108,7 +108,7 @@ export default function EditTaskPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen" style={{ backgroundColor: "#1a1a1a" }}>
       {/* Black Header Bar */}
       <header className="bg-black shadow-lg border-b border-gray-800">
         <div className="max-w-6xl mx-auto px-8 py-12">
@@ -136,7 +136,10 @@ export default function EditTaskPage() {
       </header>
 
       {/* Main Content */}
-      <div className="max-w-2xl mx-auto px-4 py-8">
+      <div
+        className="max-w-2xl mx-auto px-4 py-8"
+        style={{ backgroundColor: "#1a1a1a" }}
+      >
         {/* Page Title */}
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-gray-100">Edit Task</h2>

@@ -78,7 +78,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen" style={{ backgroundColor: "#1a1a1a" }}>
       {/* Black Header Bar */}
       <header className="bg-black shadow-lg border-b border-gray-800">
         <div className="max-w-6xl mx-auto px-8 py-12">
@@ -103,7 +103,10 @@ export default function HomePage() {
       </header>
 
       {/* Main Content */}
-      <div className="max-w-4xl mx-auto px-4 py-8">
+      <div
+        className="max-w-4xl mx-auto px-4 py-8"
+        style={{ backgroundColor: "#1a1a1a" }}
+      >
         {/* Task Summary Counters positioned on opposite sides of the line */}
         <div className="flex justify-between items-center mb-4">
           <div className="flex items-center space-x-2">
@@ -115,7 +118,7 @@ export default function HomePage() {
             </span>
           </div>
           <div className="flex items-center space-x-2">
-            <span className="text-purple-500 text-lg font-medium">
+            <span className="text-lg font-medium" style={{ color: "#5e5ed3" }}>
               Completed
             </span>
             <span className="bg-gray-700 text-white px-3 py-1 rounded-full text-sm font-medium">

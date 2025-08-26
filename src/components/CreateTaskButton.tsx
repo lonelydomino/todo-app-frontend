@@ -1,6 +1,5 @@
 "use client";
 
-import { Plus } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export default function CreateTaskButton() {
@@ -15,8 +14,8 @@ export default function CreateTaskButton() {
       onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#1d70a0")}
     >
       <span className="text-lg">Create Task</span>
-      <div className="bg-white rounded-full p-1">
-        <Plus className="w-5 h-5" style={{ color: "#1d70a0" }} />
+      <div className="p-1">
+        <img src="/add icon.png" alt="Add Icon" className="w-6 h-6" />
       </div>
     </button>
   );
