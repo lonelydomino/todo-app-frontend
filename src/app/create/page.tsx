@@ -62,15 +62,6 @@ export default function CreateTaskPage() {
                 <span style={{ color: "#5e5ed3" }}> App</span>
               </h1>
             </div>
-
-            {/* Back Button */}
-            <button
-              onClick={handleBack}
-              className="inline-flex items-center space-x-2 px-8 py-2 text-gray-300 bg-gray-800 hover:bg-gray-700 rounded-md transition-colors"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span>Back</span>
-            </button>
           </div>
         </div>
       </header>
@@ -80,9 +71,15 @@ export default function CreateTaskPage() {
         className="max-w-2xl mx-auto px-4 py-8"
         style={{ backgroundColor: "#1a1a1a" }}
       >
-        {/* Page Title */}
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-100">Create New Task</h2>
+        {/* Left Arrow */}
+        <div className="mb-8">
+          <button
+            onClick={handleBack}
+            className="cursor-pointer hover:opacity-80 transition-opacity"
+            aria-label="Go back to main page"
+          >
+            <img src="/arrow.png" alt="Left Arrow" className="w-18 h-18" />
+          </button>
         </div>
 
         {/* Form */}
