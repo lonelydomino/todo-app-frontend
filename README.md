@@ -111,9 +111,9 @@ The frontend communicates with the backend through the `api.ts` service file, wh
 
 ## Color System
 
-Tasks support 6 predefined colors:
+Tasks support 7 predefined colors:
 
-- Red, Blue, Green, Yellow, Purple, Pink
+- Red, Blue, Green, Yellow, Purple, Pink, Brown
 
 Each color has consistent styling across the application with proper contrast ratios.
 
