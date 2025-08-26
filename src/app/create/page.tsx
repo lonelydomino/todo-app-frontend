@@ -28,7 +28,6 @@ export default function CreateTaskPage() {
     e.preventDefault();
 
     if (!title.trim()) {
-      setError("Title is required");
       return;
     }
 
@@ -168,20 +167,36 @@ export default function CreateTaskPage() {
             <div className="flex justify-end pt-4">
               <button
                 type="submit"
-                disabled={loading || !title.trim()}
-                className="w-full inline-flex items-center justify-center space-x-3 text-white font-medium py-4 px-8 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full inline-flex items-center justify-center space-x-3 text-white font-medium py-4 px-8 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl"
                 style={{ backgroundColor: "#1d70a0" }}
                 onMouseEnter={(e) =>
-                  !loading &&
                   (e.currentTarget.style.backgroundColor = "#1a5f8a")
                 }
                 onMouseLeave={(e) =>
-                  !loading &&
                   (e.currentTarget.style.backgroundColor = "#1d70a0")
                 }
               >
                 {loading ? (
                   <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                ) : title.trim() ? (
+                  <>
+                    <span className="text-lg">Save</span>
+                    <div className="p-1">
+                      <svg
+                        className="w-6 h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={4}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                    </div>
+                  </>
                 ) : (
                   <>
                     <span className="text-lg">Add Task</span>
