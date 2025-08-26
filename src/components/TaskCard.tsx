@@ -11,12 +11,12 @@ interface TaskCardProps {
 }
 
 const colorClasses = {
-  red: "bg-red-100 border-red-300 text-red-800",
-  blue: "bg-blue-100 border-blue-300 text-blue-800",
-  green: "bg-green-100 border-green-300 text-green-800",
-  yellow: "bg-yellow-100 border-yellow-300 text-yellow-800",
-  purple: "bg-purple-100 border-purple-300 text-purple-800",
-  pink: "bg-pink-100 border-pink-300 text-pink-800",
+  red: "bg-red-900/20 border-red-500/30 text-red-400",
+  blue: "bg-blue-900/20 border-blue-500/30 text-blue-400",
+  green: "bg-green-900/20 border-green-500/30 text-green-400",
+  yellow: "bg-yellow-900/20 border-yellow-500/30 text-yellow-400",
+  purple: "bg-purple-900/20 border-purple-500/30 text-purple-400",
+  pink: "bg-pink-900/20 border-pink-500/30 text-pink-400",
 };
 
 export default function TaskCard({
@@ -30,7 +30,7 @@ export default function TaskCard({
 
   return (
     <div
-      className={`bg-white rounded-lg shadow-sm border-2 p-4 transition-all duration-200 hover:shadow-md ${
+      className={`bg-gray-800 rounded-lg shadow-lg border border-gray-700 p-4 transition-all duration-200 hover:shadow-xl hover:border-gray-600 ${
         task.completed ? "opacity-75" : ""
       }`}
     >
@@ -39,13 +39,13 @@ export default function TaskCard({
           {/* Completion Toggle */}
           <button
             onClick={() => onToggleCompletion(task.id, !task.completed)}
-            className="text-gray-400 hover:text-green-500 transition-colors"
+            className="text-gray-400 hover:text-green-400 transition-colors"
             aria-label={
               task.completed ? "Mark as incomplete" : "Mark as complete"
             }
           >
             {task.completed ? (
-              <CheckCircle className="w-6 h-6 text-green-500" />
+              <CheckCircle className="w-6 h-6 text-green-400" />
             ) : (
               <Circle className="w-6 h-6" />
             )}
@@ -55,7 +55,7 @@ export default function TaskCard({
           <div className="flex-1 min-w-0">
             <h3
               className={`text-lg font-medium ${
-                task.completed ? "line-through text-gray-500" : "text-gray-900"
+                task.completed ? "line-through text-gray-500" : "text-gray-100"
               }`}
             >
               {task.title}
@@ -66,7 +66,7 @@ export default function TaskCard({
               >
                 {task.color}
               </span>
-              <span className="text-xs text-gray-500">
+              <span className="text-xs text-gray-400">
                 {new Date(task.createdAt).toLocaleDateString()}
               </span>
             </div>
@@ -77,14 +77,14 @@ export default function TaskCard({
         <div className="flex items-center space-x-2 ml-4">
           <button
             onClick={() => onEdit(task)}
-            className="p-2 text-gray-400 hover:text-blue-500 hover:bg-blue-50 rounded-lg transition-colors"
+            className="p-2 text-gray-400 hover:text-blue-400 hover:bg-blue-900/20 rounded-lg transition-colors"
             aria-label="Edit task"
           >
             <Edit className="w-4 h-4" />
           </button>
           <button
             onClick={() => onDelete(task.id)}
-            className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+            className="p-2 text-gray-400 hover:text-red-400 hover:bg-red-900/20 rounded-lg transition-colors"
             aria-label="Delete task"
           >
             <Trash2 className="w-4 h-4" />
@@ -94,4 +94,3 @@ export default function TaskCard({
     </div>
   );
 }
-

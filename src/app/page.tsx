@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Plus, Trash2, Edit } from "lucide-react";
+import { Plus, Trash2, Edit, Rocket, FileText } from "lucide-react";
 import { Task } from "@/types/task";
 import { api } from "@/services/api";
 import TaskCard from "@/components/TaskCard";
@@ -63,45 +63,75 @@ export default function HomePage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-xl text-gray-600">Loading tasks...</div>
+      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
+        <div className="text-xl text-gray-400">Loading tasks...</div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-xl text-red-600">{error}</div>
+      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
+        <div className="text-xl text-red-400">{error}</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-900">
+      {/* Black Header Bar */}
+      <header className="bg-black shadow-lg border-b border-gray-800">
+        <div className="max-w-6xl mx-auto px-4 py-12">
+          <div className="flex items-center justify-center space-x-12">
+            {/* App Title with Rocket Icon */}
+            <div className="flex items-center">
+              <Rocket className="w-8 h-8 mr-3 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent" />
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+                Todo App
+              </h1>
+            </div>
+
+            {/* Create Task Button */}
+            <CreateTaskButton />
+          </div>
+        </div>
+      </header>
+
+      {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 py-8">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Todo List</h1>
-          <div className="flex justify-center items-center space-x-8 text-lg text-gray-600">
-            <span>Tasks: {totalCount}</span>
-            <span>
-              Completed: {completedCount} of {totalCount}
+        {/* Task Summary Counters */}
+        <div className="flex justify-center items-center space-x-12 mb-8">
+          <div className="flex items-center space-x-2">
+            <span className="text-blue-500 text-lg font-medium">Tasks</span>
+            <span className="bg-gray-700 text-white px-3 py-1 rounded-full text-sm font-medium">
+              {totalCount}
+            </span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <span className="text-purple-500 text-lg font-medium">
+              Completed
+            </span>
+            <span className="bg-gray-700 text-white px-3 py-1 rounded-full text-sm font-medium">
+              {completedCount}
             </span>
           </div>
         </div>
 
-        {/* Create Task Button */}
-        <div className="flex justify-center mb-8">
-          <CreateTaskButton />
-        </div>
+        {/* Divider Line */}
+        <div className="border-b border-gray-700 mb-8"></div>
 
-        {/* Task List */}
+        {/* Task List or Empty State */}
         <div className="space-y-4">
           {tasks.length === 0 ? (
-            <div className="text-center py-12">
-              <div className="text-gray-500 text-lg">
-                No tasks yet. Create your first task!
+            <div className="text-center py-16">
+              <div className="flex justify-center mb-4">
+                <FileText className="w-16 h-16 text-gray-600" />
+              </div>
+              <div className="text-gray-400 text-lg mb-2">
+                You don't have any tasks registered yet.
+              </div>
+              <div className="text-gray-500 text-base">
+                Create tasks and organize your to-do items.
               </div>
             </div>
           ) : (
