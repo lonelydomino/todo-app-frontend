@@ -7,11 +7,14 @@ import { api } from "@/services/api";
 
 const colorOptions = [
   { value: "red", label: "Red", className: "bg-red-500" },
-  { value: "blue", label: "Blue", className: "bg-blue-500" },
-  { value: "green", label: "Green", className: "bg-green-500" },
+  { value: "orange", label: "Orange", className: "bg-orange-500" },
   { value: "yellow", label: "Yellow", className: "bg-yellow-500" },
+  { value: "green", label: "Green", className: "bg-green-500" },
+  { value: "blue", label: "Blue", className: "bg-blue-500" },
+  { value: "indigo", label: "Indigo", className: "bg-indigo-500" },
   { value: "purple", label: "Purple", className: "bg-purple-500" },
-  { value: "pink", label: "Pink", className: "bg-pink-500" },
+  { value: "pink", label: "Pink", className: "custom-pink" },
+  { value: "brown", label: "Brown", className: "custom-brown" },
 ];
 
 export default function CreateTaskPage() {
@@ -92,7 +95,7 @@ export default function CreateTaskPage() {
                 className="block text-sm font-bold mb-2"
                 style={{ color: "#54a7dc" }}
               >
-                Text
+                Title
               </label>
               <input
                 type="text"
@@ -113,14 +116,12 @@ export default function CreateTaskPage() {
               >
                 Color
               </label>
-              <div className="grid grid-cols-3 gap-3">
+              <div className="flex flex-row space-x-4">
                 {colorOptions.map((option) => (
                   <label
                     key={option.value}
-                    className={`relative cursor-pointer rounded-lg p-3 border-2 transition-all ${
-                      color === option.value
-                        ? "border-blue-500 shadow-lg shadow-blue-500/25"
-                        : "border-gray-600 hover:border-gray-500"
+                    className={`relative cursor-pointer transition-all ${
+                      color === option.value ? "scale-110" : "hover:scale-105"
                     }`}
                   >
                     <input
@@ -131,13 +132,24 @@ export default function CreateTaskPage() {
                       onChange={(e) => setColor(e.target.value)}
                       className="sr-only"
                     />
-                    <div className="flex items-center space-x-2">
+                    <div className="flex flex-col items-center space-y-2">
                       <div
-                        className={`w-4 h-4 rounded-full ${option.className}`}
+                        className={`w-8 h-8 rounded-full ${
+                          option.className
+                        } border-2 transition-all ${
+                          color === option.value
+                            ? "border-white shadow-lg"
+                            : "border-transparent hover:border-gray-400"
+                        }`}
+                        style={{
+                          backgroundColor:
+                            option.className === "custom-brown"
+                              ? "#a2835e"
+                              : option.className === "custom-pink"
+                              ? "#ff2e54"
+                              : undefined,
+                        }}
                       ></div>
-                      <span className="text-sm font-medium text-gray-300">
-                        {option.label}
-                      </span>
                     </div>
                   </label>
                 ))}
